@@ -1,27 +1,24 @@
-<web-app>
-<servlet>
-<servlet-name>Login</servlet-name>
-<servlet-class>Login</servlet-class>
-</servlet>
-
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="tomcat-demo" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<servlet>
+		<servlet-name>TestServlet</servlet-name>
+		<servlet-class>TestServlet</servlet-class>
+	</servlet>
 	<servlet-mapping>
-		<servlet-name>Login</servlet-name>
-		<url-pattern>/Login</url-pattern>
+		<servlet-name>TestServlet</servlet-name>
+		<url-pattern>/TestServlet</url-pattern>
 	</servlet-mapping>
 
 	<security-constraint>
 		<web-resource-collection>
-		<web-resource-name>admin</web-resource-name>
-		<url-pattern>/Login</url-pattern>
-		<http-method>GET</http-method>
-            <http-method>POST</http-method>
-		 
+			<web-resource-name>Wildcard means whole app requires authentication</web-resource-name>
+			<url-pattern>/admin/*</url-pattern>
+			<http-method>GET</http-method>
+			<http-method>POST</http-method>
 		</web-resource-collection>
 		<auth-constraint>
-			<role-name>1</role-name>	
-			<role-name>2</role-name>
-			<role-name>3</role-name>
-		
+			<role-name>admin</role-name>
 		</auth-constraint>
 
 		<user-data-constraint>
@@ -31,25 +28,15 @@
 	</security-constraint>
 
 	<login-config>
-		 <auth-method>FORM</auth-method>
-<realm-name>file</realm-name>
-   
-   <form-login-config>
-      <form-login-page>/index.jsp</form-login-page>
-      <form-error-page>/admin/error.jsp</form-error-page>
-   </form-login-config>
+		<auth-method>FORM</auth-method>
+         <form-login-config>
+                  <form-login-page>/index.jsp</form-login-page>
+                 <form-error-page>/error.jsp</form-error-page>
+				 
+          </form-login-config>
 	</login-config>
+	 <security-role>
+        <role-name>admin</role-name>
+    </security-role>
 
-<security-role>
-<description>Super Admin</description>
-<role-name>1</role-name>
-</security-role> 
-<security-role>
-<description> Admin</description>
-<role-name>2</role-name>
-</security-role> 
-<security-role>
-<description> User</description>
-<role-name>3</role-name>
-</security-role> 
 </web-app>
