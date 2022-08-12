@@ -28,12 +28,12 @@
 	</security-constraint>
 
 	<login-config>
-		<auth-method>FORM</auth-method>
-         <form-login-config>
+		<auth-method>BASIC</auth-method>
+     <!--    <form-login-config>
                   <form-login-page>/index.jsp</form-login-page>
                  <form-error-page>/error.jsp</form-error-page>
 				 
-          </form-login-config>
+          </form-login-config>-->
 	</login-config>
 	 <security-role>
         <role-name>admin</role-name>
